@@ -1,0 +1,5 @@
+parts/*
+!parts/plugins/*.py
+stage
+prime
+*.snap

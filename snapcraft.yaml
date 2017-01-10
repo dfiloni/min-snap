@@ -1,0 +1,59 @@
+name: min
+version: 1.5.1
+summary: Min Web Browser
+description: A smarter, faster web browser
+grade: stable
+confinement: strict
+
+apps:
+  min:
+    command: desktop-launch $SNAP/bin/min.wrapper
+    plugs:
+     - browser-support
+     - network
+     - unity7
+     - home
+     - pulseaudio
+     - opengl
+     - gsettings
+
+parts:
+  min:
+    plugin: grunt
+    node-packages: [electron]
+    source: https://github.com/minbrowser/min/archive/v1.5.1.zip
+    gruntfile: Gruntfile.js
+    source-subdir: min-1.5.1/
+
+  deps:
+    plugin: nil
+    stage-packages:
+      - gconf2
+      - gconf-service
+      - gvfs-bin
+      - libc6
+      - libcap2
+      - libgtk2.0-0
+      - libudev1
+      - libgcrypt20
+      - libnotify4
+      - libnss3
+      - libxtst6
+      - python
+      - xdg-utils
+
+  desktop-integration:
+    plugin: nil
+    stage-packages:
+      - libappindicator1
+      - libdbusmenu-glib4
+      - libnotify4
+      - libunity9
+
+  launcher:
+    plugin: dump
+    source: .
+    organize:
+      min.wrapper: bin/min.wrapper
+    stage: [-README.md]
+    after: [desktop-glib-only]

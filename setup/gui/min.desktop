@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Min
+Comment=Min is a faster, smarter web browser.
+GenericName=Web Browser
+Exec=min %U
+Icon=${SNAP}/meta/gui/min.png
+Type=Application
+StartupNotify=true
+Categories=Network;WebBrowser;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;

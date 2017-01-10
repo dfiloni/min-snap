@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd $SNAP/lib/node_modules/min
+exec $SNAP/bin/electron $SNAP/lib/node_modules/min .
